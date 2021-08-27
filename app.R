@@ -1345,7 +1345,7 @@ server <- function(input, output, session) {
   # carte des hospitalisations par departement
   output$mapDepartementH <- renderLeaflet({
     
-    palHospD <- colorBin( "YlOrRd", dataDepartementHospTotalRecent()$tauxHosps, na.color = "#aaff56")
+    palHospD <- colorBin( "Reds", dataDepartementHospTotalRecent()$tauxHosps, na.color = "#aaff56")
     
     leaflet(dataDepartementHospTotalRecent()) %>% 
       addTiles() %>% 
@@ -1376,17 +1376,17 @@ server <- function(input, output, session) {
     
     if(input$sexeDepH == FALSE){
       output$graphHD <- renderPlot({
-        graphiqueDepReg(dataHospDepP(),"dep","Hospitalisations",lkp_yellow,idDepH)
+        graphiqueDepReg(dataHospDepP(),"dep","Hospitalisations","darkred",idDepH)
       })
       output$histogramHD <- renderPlot({
-        histogramDepReg(dataDepartementHospRecent(),"dep","Hospitalisations",lkp_yellow,idDepH,"nothing")
+        histogramDepReg(dataDepartementHospRecent(),"dep","Hospitalisations","darkred",idDepH,"nothing")
       })
     }else{
       output$graphHD <- renderPlot({
         graphiqueDepRegFactor(dataHospDepPSexe(),"dep","Hospitalisations","sexe",idDepH)
       })
       output$histogramHD <- renderPlot({
-        histogramDepReg(dataDepartementHospRecent(),"dep","Hospitalisations",lkp_yellow,idDepH,"sexe")
+        histogramDepReg(dataDepartementHospRecent(),"dep","Hospitalisations","darkred",idDepH,"sexe")
       })
     }
   })
@@ -1627,7 +1627,7 @@ server <- function(input, output, session) {
   # carte des hospitalisations par region
   output$mapRegionH <- renderLeaflet({
     
-    palHospR <- colorBin( "YlOrRd", bins = c(0,0.4,0.8,1,1.2,1.4,2,10,30,Inf), na.color = "#aaff56")
+    palHospR <- colorBin( "Reds", bins = c(0,0.4,0.8,1,1.2,1.4,2,10,30,Inf), na.color = "#aaff56")
     
     leaflet(dataRegionHospTotalRecent()) %>% 
       addTiles() %>% 
@@ -1658,17 +1658,17 @@ server <- function(input, output, session) {
 
     if(input$ageRegH == FALSE){
       output$graphHR <- renderPlot({
-        graphiqueDepReg(dataHospRegP(),"reg","Hospitalisations",lkp_yellow,idRegH)
+        graphiqueDepReg(dataHospRegP(),"reg","Hospitalisations","darkred",idRegH)
       })
       output$histogramHR <- renderPlot({
-        histogramDepReg(dataRegionHospRecent(),"reg","Hospitalisations",lkp_yellow,idRegH,"nothing")
+        histogramDepReg(dataRegionHospRecent(),"reg","Hospitalisations","darkred",idRegH,"nothing")
       })
     }else{
       output$graphHR <- renderPlot({
         graphiqueDepRegFactor(dataHospRegPAges(),"reg","Hospitalisations","cl_age",idRegH)
       })
       output$histogramHR <- renderPlot({
-        histogramDepReg(dataRegionHospRecent(),"reg","Hospitalisations",lkp_yellow,idRegH,"cl_age")
+        histogramDepReg(dataRegionHospRecent(),"reg","Hospitalisations","darkred",idRegH,"cl_age")
       })
     }
   })
